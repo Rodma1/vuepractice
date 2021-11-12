@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="awesome">显示</h1>
+    <h1 v-else-if="hello=='Hello'">Hello</h1>
+    <h1 v-else>不显示</h1>
+
+<!--    在template上使用-->
+    <template v-if="ok">
+        <h1>ok</h1>
+    </template>
+<!--    用 key 管理可复用的元素,比如输入参数，点击按钮可以替换，参数清空-->
+    <template v-if="loginType==='username'">
+        <label>username</label>
+        <input placeholder="输入用户名" key="username-input"></input>
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+    </template>
+<!--    不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS property display。-->
+    <h1 v-show="ok">hello</h1>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            awesome:true,
+            hello:"Hello",
+            ok:true,
+            loginType:'username'
+        }
+    });
+</script>
