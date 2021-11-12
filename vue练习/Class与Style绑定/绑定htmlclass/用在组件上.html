@@ -6,29 +6,35 @@
     <!-- 生产环境版本，优化了尺寸和速度 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <style>
+
         .active{background: #ff0000;}
         .test{font-size: 30px}
         .green{color: green}
+        .test2{text-align: center}
     </style>
 </head>
 <body>
 <div id="app">
-    <div
-
-            v-bind:class="[{test:isTest},isActive,isGreen]"
-            style="width:200px;height: 200px;text-align: center;line-height: 200px;">
-        hi vue
-    </div>
+    <com
+            class="test"
+            v-bind:class="{test2:isTest2}"
+            style="width:200px;height: 200px;line-height: 200px;">
+    </com>
 </div>
 </body>
 </html>
 <script type="text/javascript">
+<!--    声明一个组件-->
+    Vue.component('com',{
+        template:'<p class="active green">hello</p>'
+    })
     var vm=new Vue({
         el:"#app",
         data:{
             isActive: 'active',
             isGreen:'green',
-            isTest:true
+            isTest:true,
+            isTest2:true
         }
     });
 </script>
