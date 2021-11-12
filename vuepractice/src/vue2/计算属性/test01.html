@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 生产环境版本，优化了尺寸和速度 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>获取时间:{{now}}</p>
+  </div>
+</body>
+
+</html>
+<script>
+  var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'hell'
+      },
+      computed: {
+        // 计算属性
+        reversedMessage: function () {
+          // this指向vm实例
+          return this.message+"o"
+        },
+        // 计算时间
+        now:function(){
+            return Date.now()
+        }
+      }
+
+    }
+
+  )
+
+</script>
