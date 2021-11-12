@@ -8,14 +8,15 @@
     <style>
         .active{background: #ff0000;}
         .test{font-size: 30px}
-        .green{color: yellowgreen}
+        .green{color: green}
     </style>
 </head>
 <body>
 <div id="app">
     <div
-            class="test"
-            v-bind:class="{active:isActive,green:isGreen}" style="width:200px;height: 200px;text-align: center;line-height: 200px;">
+
+            v-bind:class="[test,isActive,isGreen]"
+            style="width:200px;height: 200px;text-align: center;line-height: 200px;">
         hi vue
     </div>
 </div>
@@ -25,8 +26,9 @@
     var vm=new Vue({
         el:"#app",
         data:{
-            isActive: true,
-            isGreen:true
+            isActive: 'active',
+            isGreen:'green',
+            test:'test'
         }
     });
 </script>

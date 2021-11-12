@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 生产环境版本，优化了尺寸和速度 -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        .active{background: #ff0000;}
+        .test{font-size: 30px}
+        .green{color: yellowgreen}
+    </style>
 </head>
-
 <body>
-  <div id="app">
-    <div v-bind:class="classObject"></div>
-  </div>
+<div id="app">
+    <div
+            class="test"
+            v-bind:class="{active:isActive,green:isGreen}"
+            style="width:200px;height: 200px;text-align: center;line-height: 200px;">
+        hi vue
+    </div>
+</div>
 </body>
-
 </html>
-<script>
-  var vm = new Vue({
-    el: "#app",
-    data: {
-      isActive: true,
-      error: null
-    },
-    computed: {
-      classObject: function () {
-        return {
-          active: this.isActive && !this.error,
-          'text-danger': this.error && this.error.type === 'fatal'
+<script type="text/javascript">
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            isActive: true,
+            isGreen:true
         }
-      }
-    }
-  })
-
+    });
 </script>
