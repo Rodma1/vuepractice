@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<div id="app">
+<!--    为了让它正常工作，这个组件内的 <input> 必须：
+将其 value attribute 绑定到一个名叫 value 的 prop 上
+在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出-->
+    <com v-model="message"></com>
+    <p>{{message}}</p>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+<!--    定义组件-->
+    Vue.component('com',{
+        props:['post'],
+        //在组件中使用v-model
+        template:`
+          <input
+              v-bind:value="post"
+              v-on:input="$emit('input', $event.target.value)"
+          >
+        `
+    })
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            message:''
+        }
+    })
+</script>
