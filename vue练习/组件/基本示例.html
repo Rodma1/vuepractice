@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<div id="app">
+    <com></com>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+<!--    定义一个名为button_com的组件-->
+    Vue.component('com',{
+        //一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的
+        data:function (){
+            return{
+                count:0
+            }
+        },
+        template:'<button v-on:click="count++">点击一下你输入的值就加1：{{count}}</button>'
+    })
+    var vm=new Vue({
+        el:"#app",
+        data:{
+
+        }
+    })
+</script>
+<!--因为组件是可复用的 Vue 实例，所以它们与 new Vue 接收相同的选项，例
+如 data、computed、watch、methods 以及生命周期钩子等。仅有的例外是像 el 这样根实例特有的选项。-->

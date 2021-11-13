@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<!--看起来当组件变得越来越复杂的时候，我们的博文不只需要标题和内容，
+还需要发布日期、评论等等。为每个相关的信息定义一个 prop 会变得很麻烦：
+所以是时候重构一下这个 <blog-post> 组件了，让它变成接受一个单独的 post prop：-->
+<div id="app">
+    <com v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></com>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+    Vue.component('com',{
+    //    定义一个prop就可以了
+        props:['post'],
+        template:'<h1>{{post.id}}:{{post.title}}</h1>'
+    })
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            //    实际情况是传入一个数组
+            posts:[
+                { id: 1, title: '数组一' },
+                { id: 2, title: '数组二' },
+                { id: 3, title: '数组三' }
+            ]
+        }
+    })
+</script>

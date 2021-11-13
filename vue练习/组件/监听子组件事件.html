@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+</head>
+<body>
+<!--我们开发 <com> 组件时，它的一些功能可能要求我们和父级组件进行沟通。比如放大某个字号，其他界面字号不变-->
+
+<!--在其父组件中，我们可以通过添加一个 postFontSize 数据 property 来支持这个功能-->
+    <div id="app">
+        <div :style="{fontSize:postFontSize+'em'}">
+            <com v-for="post in posts"
+                 v-bind:key="post.id"
+                 v-bind:post="post" v-on:enlarge-text="postFontSize+=0.1">
+
+            </com>
+        </div>
+    </div>
+<!--<div class="com">-->
+<!--    <h3>{{post.title}}</h3>-->
+<!--    <button v-on:click="$emit('enlarge-text')">-->
+<!--        变大按钮-->
+<!--    </button>-->
+<!--    <div v-html="post.content"></div>-->
+<!--</div>-->
+</body>
+</html>
+<script type="text/javascript">
+    Vue.component('com',{
+        props:['post'],
+        //现在我们在每篇博文正文之前添加一个按钮来放大字号：
+        template:'<div class="com">\n' +
+            '    <h3>{{post.title}}</h3>\n' +
+            '    <button v-on:click="$emit(\'enlarge-text\')">\n' +
+            '        变大按钮\n' +
+            '    </button>\n' +
+            '    <div v-html="post.content"></div>\n' +
+            '</div>'
+    })
+    var vm=new Vue({
+        el:"#app",
+        data:{
+
+            postFontSize:1,
+            //    实际情况是传入一个数组
+            posts:[
+                { id: 1, title: '数组一' ,content:'文本内容一'},
+                { id: 2, title: '数组二',content:'文本内容二' },
+                { id: 3, title: '数组三',content:'文本内容三' }
+            ]
+        }
+    })
+</script>
