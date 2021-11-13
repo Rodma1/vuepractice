@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="app">
+<!--        text 和 textarea 元素使用 value property 和 input 事件；-->
+        <!--        单行文本-->
+        <input  v-model="message" placeholder="输入元素">
+        <p>{{message}}</p>
+        <!--        多行文本-->
+        <span>输入多行数据</span>
+        <p style="white-space: pre-line;">{{message}}</p>
+        <br>
+        <textarea v-model="message" placeholder="输入文本后换行"></textarea>
+<!--        checkbox 和 radio 使用 checked property 和 change 事件；-->
+        <!--     复选框   -->
+        <br>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+        <!--        单选按钮radio-->
+        <br>
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+<!--        select 字段将 value 作为 prop 并将 change 作为事件。-->
+        <!--选择框        -->
+        <br>
+        <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>我爱你</option>
+            <option>你爱我</option>
+        </select>
+        <span>{{selected}}</span>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            message:'',
+            checkedNames: [],
+            picked:'',
+            selected:''
+        }
+    })
+</script>
