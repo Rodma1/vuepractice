@@ -15,7 +15,7 @@
         <div :style="{fontSize:postFontSize+'em'}">
             <com v-for="post in posts"
                  v-bind:key="post.id"
-                 v-bind:post="post" v-on:enlarge-text="postFontSize+=$event">
+                 v-bind:post="post" v-on:enlarge-text="test">
 
             </com>
         </div>
@@ -54,6 +54,12 @@
                 { id: 2, title: '数组二',content:'文本内容二' },
                 { id: 3, title: '数组三',content:'文本内容三' }
             ]
+        },
+        methods:{
+            test:function (enlarge){
+                this.postFontSize+=enlarge
+            }
         }
+
     })
 </script>
