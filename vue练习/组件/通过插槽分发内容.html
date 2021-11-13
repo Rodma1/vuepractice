@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<!--和 HTML 元素一样，我们经常需要向一个组件传递内容，Vue 自定义的 <slot> 元素让这变得非常简单-->
+<div id="app">
+    <com>插入元素</com>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    <!--    定义组件-->
+    Vue.component('com',{
+        props:['post'],
+        //在组件中使用v-model
+        template:`
+          <div class="demo-com">
+            <strong>错误</strong>
+            <slot></slot>
+          </div>
+        `
+    })
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            message:''
+        }
+    })
+</script>
