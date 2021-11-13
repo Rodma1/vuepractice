@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<div id="app">
+    <!--  除了直接绑定到一个方法，也可以在内联 JavaScript 语句中调用方法-->
+    <button v-on:click="hello('小陈')">和小陈打招呼</button>
+    <button v-on:click="hello('小智')">和小智打招呼</button>
+<!--    有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法-->
+    <button v-on:click="warn('访问原始的 DOM 事件', $event)">
+        点击
+    </button>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            counter:0
+        },
+        methods:{
+            hello: function (message){
+                alert(message)
+            },
+            warn: function (message, event) {
+                // 现在我们可以访问原生事件对象
+                if (event) {
+                    event.preventDefault()
+                }
+                alert(message)
+            }
+        }
+    });
+</script>
