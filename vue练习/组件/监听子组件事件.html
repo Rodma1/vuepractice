@@ -15,7 +15,7 @@
         <div :style="{fontSize:postFontSize+'em'}">
             <com v-for="post in posts"
                  v-bind:key="post.id"
-                 v-bind:post="post" v-on:enlarge-text="postFontSize+=0.1">
+                 v-bind:post="post" v-on:enlarge-text="postFontSize+=$event">
 
             </com>
         </div>
@@ -33,13 +33,15 @@
     Vue.component('com',{
         props:['post'],
         //现在我们在每篇博文正文之前添加一个按钮来放大字号：
-        template:'<div class="com">\n' +
-            '    <h3>{{post.title}}</h3>\n' +
-            '    <button v-on:click="$emit(\'enlarge-text\')">\n' +
-            '        变大按钮\n' +
-            '    </button>\n' +
-            '    <div v-html="post.content"></div>\n' +
-            '</div>'
+        template:`
+            <div class="com">
+              <h3>{{ post.title }}</h3>
+              <button v-on:click="$emit('enlarge-text',0.1)">
+                点击按钮放大
+              </button>
+              <div v-html="post.content"></div>
+            </div>
+          `
     })
     var vm=new Vue({
         el:"#app",
