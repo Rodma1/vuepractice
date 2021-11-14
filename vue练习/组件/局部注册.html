@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<div id="app">
+<!--    全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建系统，
+全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。
+这造成了用户下载的 JavaScript 的无谓的增加。-->
+    <test v-bind:post="message">通过插槽插入数据</test>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            message:'你好'
+        },
+    //    创建局部注册组件
+        components: {
+            test:{
+                props:['post'],
+                template:`<div>
+                  <h2>{{post}}</h2>
+                  <slot></slot>
+                </div>
+
+                `
+            }
+        }
+    })
+</script>
