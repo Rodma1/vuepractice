@@ -19,8 +19,9 @@ export default  new Router({
       component:Login
     },
     {
-      path:'/main',
-      name:'main',
+      path:'/main/:age',
+      props:true,
+      name:'Main',
       component: Main
     }
   ]

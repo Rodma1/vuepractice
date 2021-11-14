@@ -82,7 +82,8 @@ export default {
         if (valid) {
           alert('submit!');
         //  使用vue-router路由到指定页面，该方式称为编程式导航
-          this.$router.push("/main");
+          console.log("/main/"+this.ruleForm.age)
+          this.$router.push("/main/"+this.ruleForm.age);
         } else {
           console.log('error submit!!');
           return false;

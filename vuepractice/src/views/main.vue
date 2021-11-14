@@ -4,13 +4,15 @@
     <el-container>
       <el-aside width="200px">Aside</el-aside>
       <el-main>Main</el-main>
+      <span>{{age}}</span>
     </el-container>
   </el-container>
 </template>
 
 <script>
 export default {
-  name: "main"
+  name: "Main",
+  props:['age'],
 }
 </script>
 
