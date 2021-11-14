@@ -4,7 +4,7 @@
 import Vue from 'vue'
 import App from './App'
 // 导入创建的路由配置目录
-import router from './router'
+import router from './router'//自动扫描里面的路由配置
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

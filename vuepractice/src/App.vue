@@ -1,22 +1,13 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <HelloWorld />
+<!--    <router-link to="/login">登录页</router-link>-->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import HelloWorld from './components/HelloWorld'
-  import Vue from 'vue'
-  import Router from 'vue-router'
-  Vue.use(Router)
   export default {
-    name: 'App',
-    components: {
-      path: '/helloworld',
-      name: 'HelloWorld',
-      HelloWorld
-    }
+    name: 'App'
   }
 
 </script>
