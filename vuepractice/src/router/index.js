@@ -3,6 +3,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 //导入登录组件
 import Login from '../views/login'
+//导入主页面
+import Main from '../views/main'
 //安装路由
 Vue.use(Router);
 //配置路由
@@ -15,6 +17,11 @@ export default  new Router({
       name:'login',
     //  跳转到组件
       component:Login
+    },
+    {
+      path:'/main',
+      name:'main',
+      component: Main
     }
   ]
 });
