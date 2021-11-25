@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+<div id="app">
+<!--    传递静态或动态 Prop-->
+    <com-chen title="你好么"></com-chen>
+    <!--    动态赋予-->
+    <com-chen v-for="post in props" v-bind:title="post.title"></com-chen>
+<!--传入一个对象-->
+    <com-chen v-bind:author="{name:'你好'}"></com-chen>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+    Vue.component('com-chen',{
+        props:{
+            title:String,
+            author:Object
+        },
+        template:'<h3>{{author.name}}</h3>'
+    })
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            props: [
+                {title:"你好"}
+            ]
+        }
+    })
+</script>
